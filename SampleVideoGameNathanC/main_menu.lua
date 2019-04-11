@@ -133,7 +133,7 @@ function scene:create( event )
     instructionsButton = widget.newButton( 
         {
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth*2/8,
+            x = display.contentWidth*1.7/8,
             y = display.contentHeight*7/8,
 
             -- Insert the images here

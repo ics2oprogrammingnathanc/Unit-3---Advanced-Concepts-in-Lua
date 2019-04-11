@@ -26,7 +26,7 @@ local scene = composer.newScene( sceneName )
 local beetleship
 local scrollXSpeed = 8
 local scrollYSpeed = -3
-local jungleSounds = audio.loadSound("Sounds/animals144.mp3")
+local jungleSounds = audio.loadSound("Sounds/sound8.mp3")
 local jungleSoundsChannel
 
 --------------------------------------------------------------------------------------------
@@ -37,6 +37,10 @@ local jungleSoundsChannel
 local function moveBeetleship()
     beetleship.x = beetleship.x + scrollXSpeed
     beetleship.y = beetleship.y + scrollYSpeed
+    -- change transparencey of heart
+    beetleship.alpha = beetleship.alpha - 0.004
+    -- rotate the heart
+    beetleship.rotation = beetleship.rotation + 4
 end
 
 -- The function that will go to the main menu 
@@ -58,7 +62,7 @@ function scene:create( event )
     display.setDefault("background", 0, 0, 0)
 
     -- Insert the beetleship image
-    beetleship = display.newImageRect("Images/beetleship.png", 200, 200)
+    beetleship = display.newImageRect("Images/videoHeart.png", 200, 200)
 
     -- set the initial x and y position of the beetleship
     beetleship.x = 100

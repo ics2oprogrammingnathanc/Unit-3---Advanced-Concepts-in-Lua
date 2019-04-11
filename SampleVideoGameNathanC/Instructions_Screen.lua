@@ -1,7 +1,7 @@
 -----------------------------------------------------------------------------------------
 --
 -- credits_screen.lua
--- Created by: Your Name
+-- Created by: Nathan Cook
 -- Special thanks to Wal Wal for helping in the design of this framework.
 -- Date: Month Day, Year
 -- Description: This is the credits page, displaying a back button to the main menu.
@@ -18,7 +18,7 @@ local widget = require( "widget" )
 -----------------------------------------------------------------------------------------
 
 -- Naming Scene
-sceneName = "credits_screen"
+sceneName = "Instructions_Screen"
 
 -- Creating Scene Object
 scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
@@ -54,7 +54,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image and set it to the center of the screen
-    bkg_image = display.newImageRect("Images/Credits Screen.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/Instructions Screen.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
