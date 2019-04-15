@@ -43,21 +43,21 @@ local instructionsButton
 
 -- Creating Transition Function to Credits Page
 local function CreditsTransition( )       
-    composer.gotoScene( "credits_screen", {effect = "flipFadeOutIn", time = 500})
+    composer.gotoScene( "credits_screen", {effect = "fromTop", time = 500})
 end 
 
 -----------------------------------------------------------------------------------------
 
 -- Creating Transition to Level1 Screen
 local function Level1ScreenTransition( )
-    composer.gotoScene( "level1_screen", {effect = "zoomInOutFade", time = 1000})
+    composer.gotoScene( "level1_screen", {effect = "slideDown", time = 1000})
 end    
 
 -------------------------------------------------------------------------------------------
 
 -- Creating Transition Function to Credits Page
 local function InstructionsTransition( )       
-    composer.gotoScene( "Instructions_Screen", {effect = "flipFadeOutIn", time = 500})
+    composer.gotoScene( "Instructions_Screen", {effect = "fromLeft", time = 500})
 end 
 
 -- INSERT LOCAL FUNCTION DEFINITION THAT GOES TO INSTRUCTIONS SCREEN 
@@ -133,7 +133,7 @@ function scene:create( event )
     instructionsButton = widget.newButton( 
         {
             -- Set its position on the screen relative to the screen size
-            x = display.contentWidth*1.7/8,
+            x = display.contentWidth*1/8,
             y = display.contentHeight*7/8,
 
             -- Insert the images here

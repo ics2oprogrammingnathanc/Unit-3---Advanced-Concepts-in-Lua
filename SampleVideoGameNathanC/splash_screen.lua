@@ -62,7 +62,7 @@ function scene:create( event )
     display.setDefault("background", 0, 0, 0)
 
     -- Insert the beetleship image
-    beetleship = display.newImageRect("Images/videoHeart.png", 200, 200)
+    beetleship = display.newImageRect("Images/CompanyLogoNathanC@2x.png", 200, 200)
 
     -- set the initial x and y position of the beetleship
     beetleship.x = 100
