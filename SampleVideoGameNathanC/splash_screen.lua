@@ -23,24 +23,39 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
  
 -- The local variables for this scene
-local beetleship
-local scrollXSpeed = 8
+local logo
+local scrollXSpeed = 7
 local scrollYSpeed = -3
-local jungleSounds = audio.loadSound("Sounds/sound8.mp3")
-local jungleSoundsChannel
+local scrollXSpeed2 = -8
+local scrollYSpeed2 = -8
+
+---------------------------------------------------------------------------------------
+--Audio Creation
+---------------------------------------------------------------------------------------------------
+local soundef = audio.loadSound("Sounds/sound8.mp3")
+local soundefChannel
 
 --------------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 --------------------------------------------------------------------------------------------
 
 -- The function that moves the beetleship across the screen
-local function moveBeetleship()
-    beetleship.x = beetleship.x + scrollXSpeed
-    beetleship.y = beetleship.y + scrollYSpeed
-    -- change transparencey of heart
-    beetleship.alpha = beetleship.alpha - 0.004
-    -- rotate the heart
-    beetleship.rotation = beetleship.rotation + 4
+local function moveLogo()
+    logo.x = logo.x + scrollXSpeed
+    logo.y = logo.y + scrollYSpeed
+    -- change transparencey of logo
+    logo.alpha = logo.alpha - 0.004
+    -- rotate logo
+    logo.rotation = logo.rotation + 4
+end 
+
+local function moveLogo2()
+    logo3.x = logo3.x + scrollXSpeed2
+    logo3.y = logo3.y + scrollYSpeed2
+    -- change transparencey of logo
+    logo3.alpha = logo3.alpha - 0.004
+    -- rotate logo
+    logo3.rotation = logo3.rotation + 4
 end
 
 -- The function that will go to the main menu 
@@ -59,17 +74,23 @@ function scene:create( event )
     local sceneGroup = self.view
 
     -- set the background to be black
-    display.setDefault("background", 0, 0, 0)
+    display.setDefault("background", 0.4, 0.7, 0.5)
 
-    -- Insert the beetleship image
-    beetleship = display.newImageRect("Images/CompanyLogoNathanC@2x.png", 200, 200)
-
-    -- set the initial x and y position of the beetleship
-    beetleship.x = 100
-    beetleship.y = display.contentHeight/2
+    -- Insert the company logo image
+    logo = display.newImageRect("Images/CompanyLogoNathanC@2x.png", 300, 300)
+    logo.x = 100
+    logo.y = 700
+    logo2 = display.newImageRect("Images/CompanyLogoNathanC@2x.png", 300, 300)
+    logo2.x = 500
+    logo2.y = 500
+    logo3 = display.newImageRect("Images/CompanyLogoNathanC@2x.png", 300, 300)
+    logo3.x = 1030
+    logo3.y = 700
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
-    sceneGroup:insert( beetleship )
+    sceneGroup:insert( logo )
+    sceneGroup:insert( logo2 )
+    sceneGroup:insert( logo3 )
 
 end -- function scene:create( event )
 
@@ -94,10 +115,11 @@ function scene:show( event )
 
     elseif ( phase == "did" ) then
         -- start the splash screen music
-        jungleSoundsChannel = audio.play(jungleSounds )
+        soundefChannel = audio.play(soundef)
 
-        -- Call the moveBeetleship function as soon as we enter the frame.
-        Runtime:addEventListener("enterFrame", moveBeetleship)
+        -- Call the moveLogo function as soon as we enter the frame.
+        Runtime:addEventListener("enterFrame", moveLogo)
+        Runtime:addEventListener("enterFrame", moveLogo2)
 
         -- Go to the main menu screen after the given time.
         timer.performWithDelay ( 3000, gotoMainMenu)          
@@ -127,8 +149,7 @@ function scene:hide( event )
     -- Called immediately after scene goes off screen.
     elseif ( phase == "did" ) then
         
-        -- stop the jungle sounds channel for this screen
-        audio.stop(jungleSoundsChannel)
+        
     end
 
 end --function scene:hide( event )
