@@ -39,7 +39,7 @@ local bkg
 
 -- determine the range for the numbers to add
 local MIN_NUM = 1
-local MAX_NUM = 10
+local MAX_NUM = 15
 
 -- the variables containing the first and second numbers to add for the equation
 local firstNumber
@@ -69,6 +69,9 @@ local congratulationText
 
 -- Displays text that says correct.
 local correct 
+
+-- Displays text that says incorrect
+local incorrect
 
 -- Displays the level text of time text
 local level1Text 
@@ -127,6 +130,11 @@ local function LoseScreenTransition( )
     composer.gotoScene( "you_lose", {effect = "zoomInOutFade", time = 1000})
 end 
 
+-- Function that transitions to Win Screen
+local function WinScreenTransition( )        
+    composer.gotoScene( "you_win", {effect = "zoomInOutFade", time = 1000})
+end 
+
 -- The function that displays the equation and determines the answer and the wrong answers
 local function DisplayAddEquation()
     -- local variables to this function
@@ -155,13 +163,16 @@ local function RestartScene()
     numberCorrectText.text = "Number correct = " .. tostring(numberCorrect)
 
     -- if they have 0 lives, go to the You Lose screen
-    if (lives == 0) then
+    if (lives == 0) then 
         composer.gotoScene("you_lose")
     else 
 
         DisplayAddEquation()
         DetermineAnswers()
         DisplayAnswers()
+    elseif
+        (numberCorrect = 5) then
+        composer.gotoScene("you_win")
     end
 end
 
@@ -182,7 +193,6 @@ local function TouchListenerAnswer(touch)
             -- call RestartScene after 1 second
             timer.performWithDelay( 1000, RestartScene )
         end        
-
     end
 end
 
@@ -198,6 +208,8 @@ local function TouchListenerWrongAnswer1(touch)
         if (answer ~= tonumber(userAnswer)) then
             -- decrease a life
             lives = lives - 1
+            -- Have incorrect appear
+            incorrect.isVisible = true
             -- call RestartScene after 1 second
             timer.performWithDelay( 1000, RestartScene )            
         end        
@@ -218,6 +230,8 @@ local function TouchListenerWrongAnswer2(touch)
             if (answer ~= tonumber(userAnswer)) then
                 -- decrease a life
                 lives = lives - 1
+                -- Have incorrect appear
+                incorrect.isVisible = true
                 -- call RestartScene after 1 second
                 timer.performWithDelay( 1000, RestartScene )            
             end        
@@ -292,6 +306,10 @@ function scene:create( event )
     correct = display.newText("Correct", display.contentWidth/2, display.contentHeight*1/3, nil, 50 )
     correct:setTextColor(100/255, 47/255, 210/255)
     correct.isVisible = false
+
+    incorrect = display.newText("Incorrect", display.contentWidth/2, display.contentHeight*1/3, nil, 50 )
+    incorrect:setTextColor(170/255, 47/255, 110/255)
+    incorrect.isVisible = false
 
     -- create the text object that will say Out of Time, set the colour and then hide it
     outOfTimeText = display.newText("Out of Time!", display.contentWidth*2/5, display.contentHeight*1/3, nil, 50)
