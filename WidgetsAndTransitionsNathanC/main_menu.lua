@@ -386,7 +386,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Fade", -- The text labeled on the button
+                label = "A", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -416,7 +416,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Cross Fade", -- The text labeled on the button
+                label = "B", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -446,7 +446,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Zoom Out In", -- The text labeled on the button
+                label = "C", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -476,7 +476,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Zoom Out In Fade", -- The text labeled on the button
+                label = "D", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -506,7 +506,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Zoom In Out", -- The text labeled on the button
+                label = "E", -- The text labeled on the button
                 labelColor = { default = { 0, 0, 0 }, over = { 0, 0, 0 } },
                 font = Arial,
                 fontSize = 42,
@@ -536,7 +536,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Zoom In Out Fade", -- The text labeled on the button
+                label = "F", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -566,7 +566,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Flip", -- The text labeled on the button
+                label = "G", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -596,7 +596,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Flip Fade Out In", -- The text labeled on the button
+                label = "H", -- The text labeled on the button
                 labelColor = { default = {0, 0, 0 }, over = { 0, 0, 0 } },
                 font = Arial,
                 fontSize = 42,
@@ -626,7 +626,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Zoom O-I Rotate", -- The text labeled on the button
+                label = "I", -- The text labeled on the button
                 labelColor = { default = { 0, 0, 0 }, over = { 0, 0, 0 } },
                 font = Arial,
                 fontSize = 42,
@@ -656,7 +656,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Z O-I Fade Rotate", -- The text labeled on the button
+                label = "J", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -686,7 +686,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Zoom I-O Rotate", -- The text labeled on the button
+                label = "K", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -716,7 +716,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Z I-O Fade Rotate", -- The text labeled on the button
+                label = "L", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -746,7 +746,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "From Right", -- The text labeled on the button
+                label = "M", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -776,7 +776,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "From Left", -- The text labeled on the button
+                label = "N", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -806,7 +806,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "From Top", -- The text labeled on the button
+                label = "O", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -836,7 +836,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "From Bottom", -- The text labeled on the button
+                label = "P", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -866,7 +866,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Slide Left", -- The text labeled on the button
+                label = "Q", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -896,7 +896,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Slide Right", -- The text labeled on the button
+                label = "S", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -926,7 +926,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Slide Down", -- The text labeled on the button
+                label = "R", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
@@ -956,7 +956,7 @@ function scene:show( event )
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
-                label = "Slide Up", -- The text labeled on the button
+                label = "T", -- The text labeled on the button
                 labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
                 font = Arial,
                 fontSize = 42,
