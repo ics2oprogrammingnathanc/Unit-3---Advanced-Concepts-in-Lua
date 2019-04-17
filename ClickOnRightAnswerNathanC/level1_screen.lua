@@ -84,8 +84,8 @@ local alreadyClickedAnswer = false
 -----------------------------------------------------------------------------------------
 -- SOUND
 -----------------------------------------------------------------------------------------
-
-
+local backGround = audio.loadSound( "Sounds/level1Music.wav")
+local backSoundChannel
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -285,6 +285,10 @@ local function RemoveTextObjectListeners()
     wrongAnswer3TextObject:removeEventListener("touch", TouchListenerWrongAnswer3)
 end
 
+-- Function for bkg sound
+local function bkgSound()
+    backSoundChannel = audio.play(backGround)
+end
 -----------------------------------------------------------------------------------------
 -- GLOBAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -349,6 +353,7 @@ function scene:create( event )
     level1Text = display.newText("Level 1", display.contentWidth*2/12, display.contentHeight*2/12, nil, 50)
     level1Text:setTextColor(0, 0, 0)
     
+    bkgSound()
     -- Insert objects into scene group
     sceneGroup:insert( bkg )  
     sceneGroup:insert( numberCorrectText )
