@@ -86,6 +86,10 @@ local alreadyClickedAnswer = false
 -----------------------------------------------------------------------------------------
 local backGround = audio.loadSound( "Sounds/level1Music.wav")
 local backSoundChannel
+local loseSound = audio.loadSound( "Sounds/Kids Booing.mp3")
+local loseChannel
+local youWinSound = audio.loadSound( "Sounds/CorrectAnswerOld.mp3")
+local winChannel
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -173,8 +177,10 @@ local function RestartScene()
     -- if they have 0 lives, go to the You Lose screen
     if (lives == 0) then 
         composer.gotoScene("you_lose")
+        loseChannel = audio.play(loseSound)
         elseif (numberCorrect == 3) then
             composer.gotoScene("you_win")
+            winChannel = audio.play(youWinSound)
         else
             DisplayAddEquation()
             DetermineAnswers()
@@ -287,7 +293,7 @@ end
 
 -- Function for bkg sound
 local function bkgSound()
-    backSoundChannel = audio.play(backGround)
+    backSoundChannel = audio.play(backGround, { channel=1, loops=-1} )
 end
 -----------------------------------------------------------------------------------------
 -- GLOBAL FUNCTIONS
