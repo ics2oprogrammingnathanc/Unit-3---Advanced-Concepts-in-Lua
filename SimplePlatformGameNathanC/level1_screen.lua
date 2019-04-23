@@ -58,11 +58,13 @@ local numLives = 2
 
 local rArrow 
 local uArrow
+local lArrow
 
 local motionx = 0
 local SPEED = 5
+local SPEED2 = -5
 local LINEAR_VELOCITY = -100
-local GRAVITY = 7
+local GRAVITY = 3
 
 local leftW 
 local topW
@@ -70,6 +72,7 @@ local floor
 
 local ball1
 local ball2
+local ball3
 local theBall
 
 local questionsAnswered = 0
@@ -91,6 +94,12 @@ local function up (touch)
     end
 end
 
+-- When up arrow is touched, move character left
+local function left (touch)
+    motionx = SPEED2
+    character.xScale = 1
+end
+
 -- Move character horizontally
 local function movePlayer (event)
     character.x = character.x + motionx
@@ -107,11 +116,13 @@ end
 local function AddArrowEventListeners()
     rArrow:addEventListener("touch", right)
     uArrow:addEventListener("touch", up)
+    lArrow:addEventListener("touch", left)
 end
 
 local function RemoveArrowEventListeners()
     rArrow:removeEventListener("touch", right)
     uArrow:removeEventListener("touch", up)
+    lArrow:removeEventListener("touch", left)
 end
 
 local function AddRuntimeListeners()
@@ -152,6 +163,7 @@ end
 local function MakeSoccerBallsVisible()
     ball1.isVisible = true
     ball2.isVisible = true
+    ball3.isVisible = true
 end
 
 local function MakeHeartsVisible()
@@ -207,7 +219,8 @@ local function onCollision( self, event )
         end
 
         if  (event.target.myName == "ball1") or
-            (event.target.myName == "ball2") then
+            (event.target.myName == "ball2") or 
+            (event.target.myName == "ball3") then
 
             -- get the ball that the user hit
             theBall = event.target
@@ -250,6 +263,8 @@ local function AddCollisionListeners()
     ball1:addEventListener( "collision" )
     ball2.collision = onCollision
     ball2:addEventListener( "collision" )
+    ball3.collision = onCollision
+    ball3:addEventListener( "collision" )
 
     door.collision = onCollision
     door:addEventListener( "collision" )
@@ -262,6 +277,7 @@ local function RemoveCollisionListeners()
 
     ball1:removeEventListener( "collision" )
     ball2:removeEventListener( "collision" )
+    ball3:removeEventListener( "collision" )
 
     door:removeEventListener( "collision")
 
@@ -288,6 +304,7 @@ local function AddPhysicsBodies()
 
     physics.addBody(ball1, "static",  {density=0, friction=0, bounce=0} )
     physics.addBody(ball2, "static",  {density=0, friction=0, bounce=0} )
+    physics.addBody(ball3, "static",  {density=0, friction=0, bounce=0} )
 
     physics.addBody(door, "static", {density=1, friction=0.3, bounce=0.2})
 
@@ -456,6 +473,15 @@ function scene:create( event )
     sceneGroup:insert( rArrow)
 
     --Insert the left arrow
+
+    lArrow = display.newImageRect("Images/LeftArrowUnpressed.png", 100, 50)
+    lArrow.x = display.contentWidth * 7.4 / 10
+    lArrow.y = display.contentHeight * 9.5 / 10
+    
+    -- Insert objects into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( lArrow)
+
+    -- Insert up arrow 
     uArrow = display.newImageRect("Images/UpArrowUnpressed.png", 50, 100)
     uArrow.x = display.contentWidth * 8.2 / 10
     uArrow.y = display.contentHeight * 8.5 / 10
@@ -507,6 +533,16 @@ function scene:create( event )
 
     -- Insert objects into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( ball2 )
+
+    --Insert ball 3 on the last standing platform.
+    --ball3
+    ball3 = display.newImageRect ("Images/SoccerBall.png", 70, 70)
+    ball3.x = 970
+    ball3.y = 139
+    ball3.myName = "ball3"
+
+    -- Insert objects into the scene group in order to ONLY be associated with this scene
+    sceneGroup:insert( ball3 )
 
 end --function scene:create( event )
 
