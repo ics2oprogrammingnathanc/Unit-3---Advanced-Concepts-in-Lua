@@ -57,7 +57,7 @@ function scene:create( event )
         bkg.height = display.contentHeight
 
         -- Setting color
-        bkg:setFillColor(  0.004, 0.537, 1 )
+        bkg:setFillColor(  0.2, 0.8, 0 )
 
         -- Sending to Back Layer
         bkg:toBack( )
@@ -382,12 +382,12 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 1, 0.839, 0.004 }, over = { 1, 0.604, 0.004 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 1, 0.604, 0.004 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
                 label = "A", -- The text labeled on the button
-                labelColor = { default = { 1, 1, 1 }, over = { 1, 1, 1 } },
+                labelColor = { default = { 1, 1, 1 }, over = { 0, 0, 0 } },
                 font = Arial,
                 fontSize = 42,
 
@@ -412,7 +412,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0, 0, 1 }, over = { 0, 0, 0.5 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0, 0, 0.5 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -442,7 +442,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 1, 0.2, 0.2 }, over = { 0.5, 0.1, 0.1 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.5, 0.1, 0.1 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -472,7 +472,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 1, 0.6, 0.2 }, over = { 0.5, 0.3, 0.1 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.5, 0.3, 0.1 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -502,12 +502,12 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 1, 1, 0.2 }, over = { 0.5, 0.5, 0.1 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.5, 0.5, 0.1 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
                 label = "E", -- The text labeled on the button
-                labelColor = { default = { 0, 0, 0 }, over = { 0, 0, 0 } },
+                labelColor = { default = { 1, 1, 1 }, over = { 0, 0, 0 } },
                 font = Arial,
                 fontSize = 42,
 
@@ -532,7 +532,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.6, 1, 0.2 }, over = { 0.3, 0.5, 0.1 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.3, 0.5, 0.1 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -562,7 +562,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.2, 1, 0.2 }, over = { 0.1, 0.5, 0.1 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.1, 0.5, 0.1 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -592,12 +592,12 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.2, 1, 0.6 }, over = { 0.1, 0.5, 0.3 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.1, 0.5, 0.3 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
                 label = "H", -- The text labeled on the button
-                labelColor = { default = {0, 0, 0 }, over = { 0, 0, 0 } },
+                labelColor = { default = {1, 1, 1 }, over = { 0, 0, 0 } },
                 font = Arial,
                 fontSize = 42,
 
@@ -622,12 +622,12 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.2, 1, 1 }, over = { 0.1, 0.5, 0.5 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.1, 0.5, 0.5 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
                 label = "I", -- The text labeled on the button
-                labelColor = { default = { 0, 0, 0 }, over = { 0, 0, 0 } },
+                labelColor = { default = { 1, 1, 1 }, over = { 0, 0, 0 } },
                 font = Arial,
                 fontSize = 42,
 
@@ -652,7 +652,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.2, 0.6, 1 }, over = { 0.1, 0.3, 0.5 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.1, 0.3, 0.5 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -682,7 +682,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.2, 0.2, 1 }, over = { 0.1, 0.1, 0.5 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.1, 0.1, 0.5 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -712,7 +712,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.6, 0.2, 1 }, over = { 0.3, 0.2, 0.5 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.3, 0.2, 0.5 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -742,7 +742,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 1, 0.2, 1 }, over = { 0.5, 0.1, 0.5 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.5, 0.1, 0.5 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -772,7 +772,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.6, 0.6, 0.6 }, over = { 0.3, 0.3, 0.3 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.3, 0.3, 0.3 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -802,7 +802,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.8, 0, 0 }, over = { 0.4, 0, 0 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.4, 0, 0 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -832,7 +832,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0, 0.8, 0 }, over = { 0, 0.4, 0 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0, 0.4, 0 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -862,7 +862,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0, 0, 0.8 }, over = { 0, 0, 0.4 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0, 0, 0.4 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -892,7 +892,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 1, 0.5, 0 }, over = { 0.5, 0.25, 0 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.5, 0.25, 0 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -922,7 +922,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = { 0.8, 0, 0.8 }, over = { 0.4, 0, 0.4 } },
+                fillColor = { default = { 0, 0, 0 }, over = { 0.4, 0, 0.4 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
@@ -952,7 +952,7 @@ function scene:show( event )
                 strokeWidth = 10,
 
                 -- Changing button colors (Default = not clicked, over = clicked)
-                fillColor = { default = {0, 0.6, 0.6 }, over = { 0, 0.3, 0.3 } },
+                fillColor = { default = {0, 0, 0 }, over = { 0, 0.3, 0.3 } },
                 strokeColor = { default = { 0.75, 0, 0 }, over = { 0.5, 0, 0 } },
                 
                 -- Creating text on button
