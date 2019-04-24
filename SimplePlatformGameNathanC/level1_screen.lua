@@ -69,6 +69,7 @@ local GRAVITY = 3
 local leftW 
 local topW
 local floor
+local rightW
 
 local ball1
 local ball2
