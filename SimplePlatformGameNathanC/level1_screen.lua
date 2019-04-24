@@ -61,8 +61,8 @@ local uArrow
 local lArrow
 
 local motionx = 0
-local SPEED = 5
-local SPEED2 = -5
+local SPEED = 8
+local SPEED2 = -8
 local LINEAR_VELOCITY = -100
 local GRAVITY = 3
 
@@ -97,7 +97,7 @@ end
 -- When up arrow is touched, move character left
 local function left (touch)
     motionx = SPEED2
-    character.xScale = 1
+    character.xScale = -1
 end
 
 -- Move character horizontally
@@ -175,6 +175,10 @@ local function YouLoseTransition()
     composer.gotoScene( "you_lose" )
 end
 
+local function YouWinTransition()
+    composer.gotoScene( "you_win" )
+end
+
 local function onCollision( self, event )
     -- for testing purposes
     --print( event.target )        --the first object in the collision
@@ -239,9 +243,11 @@ local function onCollision( self, event )
         end
 
         if (event.target.myName == "door") then
-            --check to see if the user has answered 5 questions
+            print(questionsAnswered)
+            --check to see if the user has answered 3 questions
             if (questionsAnswered == 3) then
                 -- after getting 3 questions right, go to the you win screen
+                YouWinTransition()
             end
         end        
 
