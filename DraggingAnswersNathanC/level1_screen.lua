@@ -43,6 +43,12 @@ local alternateAnswer3
 -- Variables containing the user answer and the actual answer
 local userAnswer
 
+-- the variable for the score
+local score = 0 
+
+-- the variable for an incorrect answer
+local badScore = 0 
+
 -- boolean variables telling me which answer box was touched
 local answerboxAlreadyTouched = false
 local alternateAnswerBox1AlreadyTouched = false
@@ -83,8 +89,8 @@ local function DisplayQuestion()
     local randomNumber2
 
     --set random numbers
-    randomNumber1 = math.random(2, 15)
-    randomNumber2 = math.random(2, 15)
+    randomNumber1 = math.random(1, 20)
+    randomNumber2 = math.random(1, 20)
 
     --calculate answer
     correctAnswer = randomNumber1 + randomNumber2
@@ -114,7 +120,7 @@ local function DetermineAlternateAnswers()
     alternateAnswerBox2.text = alternateAnswer2
 
     -- generate incorrect answer and set it in the textbox
-    alternateAnswer3 = correctAnswer / math.random(1.5, 2)
+    alternateAnswer3 = correctAnswer + math.random(1, 2)
     alternateAnswerBox3.text = alternateAnswer3
 -------------------------------------------------------------------------------------------
 -- RESET ALL X POSITIONS OF ANSWER BOXES (because the x-position is changed when it is
@@ -197,7 +203,16 @@ end
 
 -- Transitioning Function to YouWin screen
 local function YouWinTransitionLevel1( )
-    composer.gotoScene("you_win", {effect = "fade", time = 500})
+    if (score == 3) then
+        composer.gotoScene("you_win", {effect = "fade", time = 500})
+    end
+end
+
+-- Transitioning Function to YouWin screen
+local function YouLoseTransitionLevel1( )
+    if (badScore == 3) then
+        composer.gotoScene("you_lose", {effect = "fade", time = 500})
+    end
 end
 
 -- Function to Restart Level 1
@@ -209,8 +224,14 @@ end
 
 -- Function to Check User Input
 local function CheckUserAnswerInput()
-          
-    timer.performWithDelay(1600, RestartLevel1) 
+    if  (userAnswer == correctAnswer) then
+        score = score + 1  
+        print(score)
+        timer.performWithDelay(1600, RestartLevel1)
+    else
+        badScore = badScore + 1
+        timer.performWithDelay(1600, RestartLevel1)
+    end
 end
 
 local function TouchListenerAnswerbox(touch)
@@ -261,7 +282,8 @@ end
 local function TouchListenerAnswerBox1(touch)
     --only work if none of the other boxes have been touched
     if (answerboxAlreadyTouched == false) and 
-        (alternateAnswerBox2AlreadyTouched == false) then
+        (alternateAnswerBox2AlreadyTouched == false) and
+        (alternateAnswerBox3AlreadyTouched == false) then
 
         if (touch.phase == "began") then
             --let other boxes know it has been clicked
@@ -301,12 +323,13 @@ end
 local function TouchListenerAnswerBox2(touch)
     --only work if none of the other boxes have been touched
     if (answerboxAlreadyTouched == false) and 
-        (alternateAnswerBox1AlreadyTouched == false) then
+        (alternateAnswerBox1AlreadyTouched == false) and
+        (alternateAnswerBox3AlreadyTouched == false) then
 
         if (touch.phase == "began") then
             --let other boxes know it has been clicked
             alternateAnswerBox2AlreadyTouched = true
-            
+
         elseif (touch.phase == "moved") then
             --dragging function
             alternateAnswerBox2.x = touch.x
@@ -337,11 +360,53 @@ local function TouchListenerAnswerBox2(touch)
     end
 end 
 
+local function TouchListenerAnswerBox3(touch)
+    --only work if none of the other boxes have been touched
+    if (answerboxAlreadyTouched == false) and 
+        (alternateAnswerBox1AlreadyTouched == false) and
+        (alternateAnswerBox2AlreadyTouched == false) then
+
+        if (touch.phase == "began") then
+            --let other boxes know it has been clicked
+            alternateAnswerBox3AlreadyTouched = true
+
+            
+         elseif (touch.phase == "moved") then
+            --dragging function
+            alternateAnswerBox3.x = touch.x
+            alternateAnswerBox3.y = touch.y
+
+         elseif (touch.phase == "ended") then
+            alternateAnswerBox3AlreadyTouched = false
+
+             -- if the box is in the userAnswerBox Placeholder  go to center of placeholder
+             if (((userAnswerBoxPlaceholder.x - userAnswerBoxPlaceholder.width/2) < alternateAnswerBox3.x ) and 
+                ((userAnswerBoxPlaceholder.x + userAnswerBoxPlaceholder.width/2) > alternateAnswerBox3.x ) and 
+                ((userAnswerBoxPlaceholder.y - userAnswerBoxPlaceholder.height/2) < alternateAnswerBox3.y ) and 
+                ((userAnswerBoxPlaceholder.y + userAnswerBoxPlaceholder.height/2) > alternateAnswerBox3.y ) ) then
+
+                alternateAnswerBox3.x = userAnswerBoxPlaceholder.x
+                alternateAnswerBox3.y = userAnswerBoxPlaceholder.y
+                userAnswer = alternateAnswer2
+
+                -- call the function to check if the user's input is correct or not
+                CheckUserAnswerInput()
+
+            --else make box go back to where it was
+            else
+                alternateAnswerBox3.x = alternateAnswerBox3PreviousX
+                alternateAnswerBox3.y = alternateAnswerBox3PreviousY
+            end
+        end
+    end
+end 
+
 -- Function that Adds Listeners to each answer box
 local function AddAnswerBoxEventListeners()
     answerbox:addEventListener("touch", TouchListenerAnswerbox)
     alternateAnswerBox1:addEventListener("touch", TouchListenerAnswerBox1)
     alternateAnswerBox2:addEventListener("touch", TouchListenerAnswerBox2)
+    alternateAnswerBox3:addEventListener("touch", TouchListenerAnswerBox3)
 end 
 
 -- Function that Removes Listeners to each answer box
@@ -349,6 +414,7 @@ local function RemoveAnswerBoxEventListeners()
     answerbox:removeEventListener("touch", TouchListenerAnswerbox)
     alternateAnswerBox1:removeEventListener("touch", TouchListenerAnswerBox1)
     alternateAnswerBox2:removeEventListener("touch", TouchListenerAnswerBox2)
+    alternateAnswerBox3:removeEventListener("touch", TouchListenerAnswerBox3)
 end 
 
 ----------------------------------------------------------------------------------
@@ -392,16 +458,19 @@ function scene:create( event )
     answerboxAlreadyTouched = false
     alternateAnswerBox1AlreadyTouched = false
     alternateAnswerBox2AlreadyTouched = false
+    alternateAnswerBox3AlreadyTouched = false
 
     --create answerbox alternate answers and the boxes to show them
     answerbox = display.newText("", display.contentWidth * 0.9, 0, nil, 100)
     alternateAnswerBox1 = display.newText("", display.contentWidth * 0.9, 0, nil, 100)
     alternateAnswerBox2 = display.newText("", display.contentWidth * 0.9, 0, nil, 100)
+    alternateAnswerBox3 = display.newText("", display.contentWidth * 0.9, 0, nil, 100)
 
     -- set the x positions of each of the answer boxes
     answerboxPreviousX = display.contentWidth * 0.9
     alternateAnswerBox1PreviousX = display.contentWidth * 0.9
     alternateAnswerBox2PreviousX = display.contentWidth * 0.9
+    alternateAnswerBox3PreviousX = display.contentWidth * 0.9
 
 
     -- the black box where the user will drag the answer
@@ -419,6 +488,7 @@ function scene:create( event )
     sceneGroup:insert( answerbox )
     sceneGroup:insert( alternateAnswerBox1 )
     sceneGroup:insert( alternateAnswerBox2 )
+    sceneGroup:insert( alternateAnswerBox3 )
     sceneGroup:insert( soccerball )
 
 end --function scene:create( event )
