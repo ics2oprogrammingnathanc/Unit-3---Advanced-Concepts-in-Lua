@@ -25,7 +25,8 @@ sceneName = "you_win"
 
 -- Creating Scene Object
 local scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
-
+local winSound = audio.loadSound("Sounds/yabbadabbalaugh.wav")
+local WinSoundChannel
 -----------------------------------------------------------------------------------------
 -- DISPLAY OBJECTS
 -----------------------------------------------------------------------------------------
@@ -36,6 +37,7 @@ function scene:create( event )
 
     -- Creating a group that associates objects with the scene
     local sceneGroup = self.view
+
 
     -----------------------------------------------------------------------------------------
     -- BACKGROUND AND DISPLAY OBJECTS
@@ -73,9 +75,8 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
-        -- Example: start timers, begin animation, play audio, etc.
+        WinSoundChannel = audio.play(winSound)
     end
-
 end -- function scene:show( event )
 
 -----------------------------------------------------------------------------------------

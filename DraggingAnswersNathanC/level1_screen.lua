@@ -1,9 +1,10 @@
 -----------------------------------------------------------------------------------------
---
+---- Title: Dragging Answers into Boxes
+-- Name(Edited by: Nathan Cook
+-- Course: ICS2O/3C
 -- game_level1.lua
 -- Created by: Daniel
 -- Date: Nov. 22nd, 2014
--- Description: This is the level 1 screen of the game.
 -----------------------------------------------------------------------------------------
 
 
@@ -77,8 +78,12 @@ local alternateAnswerBox3PreviousX
 local userAnswerBoxPlaceholder
 
 -- sound effects
-local correctSound
-local booSound
+local correctSound = audio.loadSound("Sounds/Correct.wav")
+local correctSoundChannel
+local booSound = audio.loadSound("Sounds/boo.mp3")
+local booSoundChannel
+local backGroundSound = audio.loadSound("Sounds/backGround.mp3")
+local backGroundChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -89,8 +94,8 @@ local function DisplayQuestion()
     local randomNumber2
 
     --set random numbers
-    randomNumber1 = math.random(1, 20)
-    randomNumber2 = math.random(1, 20)
+    randomNumber1 = math.random(1, 22)
+    randomNumber2 = math.random(1, 22)
 
     --calculate answer
     correctAnswer = randomNumber1 + randomNumber2
@@ -203,16 +208,14 @@ end
 
 -- Transitioning Function to YouWin screen
 local function YouWinTransitionLevel1( )
-    if (score == 3) then
-        composer.gotoScene("you_win", {effect = "fade", time = 500})
-    end
+    --Call the next scene
+    composer.gotoScene("you_win", {effect = "fade", time = 500})
 end
 
 -- Transitioning Function to YouWin screen
 local function YouLoseTransitionLevel1( )
-    if (badScore == 3) then
-        composer.gotoScene("you_lose", {effect = "fade", time = 500})
-    end
+    --call the lose scene
+    composer.gotoScene("you_lose", {effect = "fade", time = 500})
 end
 
 -- Function to Restart Level 1
@@ -225,13 +228,25 @@ end
 -- Function to Check User Input
 local function CheckUserAnswerInput()
     if  (userAnswer == correctAnswer) then
+        correctSoundChannel = audio.play(correctSound)
         score = score + 1  
         print(score)
         timer.performWithDelay(1600, RestartLevel1)
     else
+        booSoundChannel = audio.play(booSound)
         badScore = badScore + 1
         timer.performWithDelay(1600, RestartLevel1)
     end
+
+    --check the users score
+    if(score == 3) then
+        --call the you win
+        YouWinTransitionLevel1()
+    elseif (badScore == 2) then
+        --call the you lose
+        YouLoseTransitionLevel1()
+    end
+
 end
 
 local function TouchListenerAnswerbox(touch)
@@ -445,7 +460,7 @@ function scene:create( event )
     bkg_image.height = display.contentHeight
 
     --the text that displays the question
-    questionText = display.newText( "" , 0, 0, nil, 100)
+    questionText = display.newText( "" , 0, 0, nil, 115)
     questionText.x = display.contentWidth * 0.3
     questionText.y = display.contentHeight * 0.9
 
@@ -461,10 +476,10 @@ function scene:create( event )
     alternateAnswerBox3AlreadyTouched = false
 
     --create answerbox alternate answers and the boxes to show them
-    answerbox = display.newText("", display.contentWidth * 0.9, 0, nil, 100)
-    alternateAnswerBox1 = display.newText("", display.contentWidth * 0.9, 0, nil, 100)
-    alternateAnswerBox2 = display.newText("", display.contentWidth * 0.9, 0, nil, 100)
-    alternateAnswerBox3 = display.newText("", display.contentWidth * 0.9, 0, nil, 100)
+    answerbox = display.newText("", display.contentWidth * 0.9, 0, nil, 90)
+    alternateAnswerBox1 = display.newText("", display.contentWidth * 0.9, 0, nil, 90)
+    alternateAnswerBox2 = display.newText("", display.contentWidth * 0.9, 0, nil, 90)
+    alternateAnswerBox3 = display.newText("", display.contentWidth * 0.9, 0, nil, 90)
 
     -- set the x positions of each of the answer boxes
     answerboxPreviousX = display.contentWidth * 0.9
@@ -513,6 +528,7 @@ function scene:show( event )
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
         -- Example: start timers, begin animation, play audio, etc.
+        backGroundChannel = audio.play(backGroundSound)
         RestartLevel1()
         AddAnswerBoxEventListeners() 
 

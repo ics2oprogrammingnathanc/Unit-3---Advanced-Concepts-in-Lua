@@ -25,7 +25,8 @@ sceneName = "you_lose"
 
 -- Creating Scene Object
 local scene = composer.newScene( sceneName ) -- This function doesn't accept a string, only a variable containing a string
-
+local loseSound = audio.loadSound("Sounds/youLoseSound.mp3")
+local loseSoundChannel
 -----------------------------------------------------------------------------------------
 -- DISPLAY OBJECTS
 -----------------------------------------------------------------------------------------
@@ -73,7 +74,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
-        -- Example: start timers, begin animation, play audio, etc.
+        loseSoundChannel = audio.play(loseSound)
     end
 
 end -- function scene:show( event )
