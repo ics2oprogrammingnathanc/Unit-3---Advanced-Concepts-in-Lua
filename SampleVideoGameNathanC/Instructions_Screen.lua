@@ -82,8 +82,8 @@ function scene:create( event )
         -- height = 106,
 
         -- Setting Visual Properties
-        defaultFile = "Images/Back Button Unpressed.png",
-        overFile = "Images/Back Button Pressed.png",
+        defaultFile = "Old Images/Back Button Unpressed.png",
+        overFile = "Old Images/Back Button Pressed.png",
 
         -- Setting Functional Properties
         onRelease = BackTransition
@@ -119,7 +119,7 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
-        -- Example: start timers, begin animation, play audio, etc.
+        bkgSoundChannel = audio.play(bkgMusic, { channel=2, loops=-1 })
     end
 
 end -- function scene:show( event )

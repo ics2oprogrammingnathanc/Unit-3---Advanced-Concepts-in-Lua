@@ -37,6 +37,12 @@ local playButton
 local creditsButton
 local instructionsButton
 
+-------------------------------------------------------------------------------------------
+--SOUNDS
+-------------------------------------------------------------------------------------------------
+local bkgMusic = audio.loadSound"Sounds/backGroundMusic.mp3"
+local bkgSoundChannel = audio.play(bkgMusic, { channel=1, loops=-1 })
+
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
 -----------------------------------------------------------------------------------------
@@ -102,8 +108,11 @@ function scene:create( event )
             y = display.contentHeight*7/8,
 
             -- Insert the images here
-            defaultFile = "Images/Start Button Unpressed.png",
-            overFile = "Images/Start Button Pressed.png",
+            defaultFile = "Images/PlayButtonUnpressedYourName@2x.png",
+            overFile = "Images/PlayButtonPressedYourName@2x.png",
+
+            width = 250,
+            height = 125,
 
             -- When the button is released, call the Level1 screen transition function
             onRelease = Level1ScreenTransition          
@@ -119,8 +128,11 @@ function scene:create( event )
             y = display.contentHeight*7/8,
 
             -- Insert the images here
-            defaultFile = "Images/Credits Button Unpressed.png",
-            overFile = "Images/Credits Button Pressed.png",
+            defaultFile = "Images/CreditsButtonUnpressedYourName@2x.png",
+            overFile = "Images/CreditsButtonPressedYourName@2x.png",
+
+            width = 250,
+            height = 125,
 
             -- When the button is released, call the Credits transition function
             onRelease = CreditsTransition
