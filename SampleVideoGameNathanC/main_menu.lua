@@ -36,12 +36,19 @@ local bkg_image
 local playButton
 local creditsButton
 local instructionsButton
+local muteButton
+local unmuteButton
+
+----------------------------------------------------------------------------------------
+--GLOBAL VARIABLES
+-----------------------------------------------------------------------------------------
+soundOn = true
 
 -------------------------------------------------------------------------------------------
 --SOUNDS
 -------------------------------------------------------------------------------------------------
 local bkgMusic = audio.loadSound"Sounds/backGroundMusic.mp3"
-local bkgSoundChannel = audio.play(bkgMusic, { channel=1, loops=-1 })
+local bkgSoundChannel
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -66,6 +73,35 @@ local function InstructionsTransition( )
     composer.gotoScene( "Instructions_Screen", {effect = "fromLeft", time = 500})
 end 
 
+------------------------------------------------------------------------------
+
+-- Creating a mute button function
+local function Mute(touch)
+    if (touch.phase == "ended") then
+        -- pause the sound
+        audio.pause(bkgMusic)
+        -- set the boolean variable to be false
+        soundOn = false
+        -- hide the mute button
+        muteButton.isVisable = false
+        -- make the unmute button visible
+        unmuteButton.isVisable = true
+    end
+end
+
+-- Creating a mute button function
+local function Unmute(touch)
+    if (touch.phase == "ended") then
+        -- pause the sound
+        audio.play(bkgMusic)
+        -- set the boolean variable to be false
+        soundOn = true
+        -- hide the unmute button
+        unmuteButton.isVisable = false
+        -- make the mute button visible
+        muteButton.isVisable = true
+    end
+end
 -- INSERT LOCAL FUNCTION DEFINITION THAT GOES TO INSTRUCTIONS SCREEN 
 
 -----------------------------------------------------------------------------------------
@@ -96,6 +132,7 @@ function scene:create( event )
     -- Send the background image to the back layer so all other objects can be on top
     bkg_image:toBack()
 
+    
     -----------------------------------------------------------------------------------------
     -- BUTTON WIDGETS
     -----------------------------------------------------------------------------------------   
@@ -156,6 +193,22 @@ function scene:create( event )
             onRelease = InstructionsTransition
         } ) 
 
+    -- creating mute button
+    muteButton = display.newImageRect("Images/muteButton.png", 200, 200)
+    muteButton.x = display.contentWidth*1.5/10
+    muteButton.y = display.contentHeight*1.3/10
+    muteButton.isVisable = true
+
+    onRelease = Mute
+
+----------------------------------------------------------------------------------
+    -- creating unmute button
+    unmuteButton = display.newImageRect("Images/unmuteButton.png", 200, 200)
+    unmuteButton.x = display.contentWidth*1.5/10
+    unmuteButton.y = display.contentHeight*1.3/10
+    unmuteButton.isVisable = false
+
+    onRelease = unmute
 
     -- ADD INSTRUCTIONS BUTTON WIDGET
 
@@ -165,6 +218,8 @@ function scene:create( event )
     sceneGroup:insert( playButton )
     sceneGroup:insert( creditsButton )
     sceneGroup:insert( instructionsButton )
+    sceneGroup:insert( muteButton )
+    sceneGroup:insert( unmuteButton )
     
     -- INSERT INSTRUCTIONS BUTTON INTO SCENE GROUP
 
@@ -195,8 +250,9 @@ function scene:show( event )
     -- Insert code here to make the scene come alive.
     -- Example: start timers, begin animation, play audio, etc.
     elseif ( phase == "did" ) then       
-        
-
+        bkgSoundChannel = audio.play(bkgMusic, {loops= -1})
+        muteButton:addEventListener("touch", Mute)
+        unmuteButton:addEventListener("touch", Unmute)
     end
 
 end -- function scene:show( event )
@@ -219,11 +275,14 @@ function scene:hide( event )
         -- Called when the scene is on screen (but is about to go off screen).
         -- Insert code here to "pause" the scene.
         -- Example: stop timers, stop animation, stop audio, etc.
+        audio.stop(bkgSoundChannel)
 
     -----------------------------------------------------------------------------------------
 
     elseif ( phase == "did" ) then
         -- Called immediately after scene goes off screen.
+        muteButton:removeEventListener("touch", Mute)
+        unmuteButton:removeEventListener("touch", Unmute)
     end
 
 end -- function scene:hide( event )
