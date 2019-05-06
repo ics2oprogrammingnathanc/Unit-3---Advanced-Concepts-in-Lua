@@ -18,6 +18,9 @@ sceneName = "splash_screen"
 -- Create Scene Object
 local scene = composer.newScene( sceneName )
 
+-- hide status bar
+display.setStatusBar(display.HiddenStatusBar)
+
 ----------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
 -----------------------------------------------------------------------------------------

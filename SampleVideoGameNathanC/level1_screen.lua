@@ -20,14 +20,12 @@ local widget = require( "widget" )
 sceneName = "level1_screen"
 
 -----------------------------------------------------------------------------------------
-
 -- Creating Scene Object
 local scene = composer.newScene( sceneName )
 
 -----------------------------------------------------------------------------------------
 -- LOCAL VARIABLES
 -----------------------------------------------------------------------------------------
-
 -- The local variables for this scene
 local bkg_image
 

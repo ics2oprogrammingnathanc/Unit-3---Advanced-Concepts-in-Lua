@@ -119,7 +119,6 @@ function scene:show( event )
     elseif ( phase == "did" ) then
         -- Called when the scene is now on screen.
         -- Insert code here to make the scene come alive.
-        bkgSoundChannel = audio.play(bkgMusic, { channel=2, loops=-1 })
     end
 
 end -- function scene:show( event )
