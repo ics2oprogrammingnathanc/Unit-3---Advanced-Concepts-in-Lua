@@ -41,7 +41,7 @@ local instructionsButton
 --SOUNDS
 -------------------------------------------------------------------------------------------------
 local bkgMusic = audio.loadSound"Sounds/backGroundMusic.mp3"
-local bkgSoundChannel = audio.play(bkgMusic, { channel=1, loops=-1 })
+local bkgSoundChannel 
 
 -----------------------------------------------------------------------------------------
 -- LOCAL FUNCTIONS
@@ -194,9 +194,9 @@ function scene:show( event )
     -- Called when the scene is now on screen.
     -- Insert code here to make the scene come alive.
     -- Example: start timers, begin animation, play audio, etc.
-    elseif ( phase == "did" ) then       
-        
-
+    elseif ( phase == "did" ) then
+        -- play background music
+        bkgSoundChannel = audio.play(bkgMusic, { channel=1, loops=-1 })
     end
 
 end -- function scene:show( event )
@@ -216,9 +216,8 @@ function scene:hide( event )
     -----------------------------------------------------------------------------------------
 
     if ( phase == "will" ) then
-        -- Called when the scene is on screen (but is about to go off screen).
-        -- Insert code here to "pause" the scene.
-        -- Example: stop timers, stop animation, stop audio, etc.
+        -- stop background music
+        bkgMusic = audio.stop()
 
     -----------------------------------------------------------------------------------------
 
