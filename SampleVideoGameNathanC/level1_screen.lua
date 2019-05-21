@@ -28,6 +28,15 @@ local scene = composer.newScene( sceneName )
 -----------------------------------------------------------------------------------------
 -- The local variables for this scene
 local bkg_image
+local backButton
+
+---------------------------------------------------------------------------------------------
+--LOCAL FUNCTIONS
+---------------------------------------------------------------------------------------------------------
+-- Creating Transitioning Function back to main menu
+local function BackTransition( )
+    composer.gotoScene( "main_menu", {effect = "fromRight", time = 500})
+end
 
 -----------------------------------------------------------------------------------------
 -- GLOBAL SCENE FUNCTIONS
@@ -42,7 +51,7 @@ function scene:create( event )
     -----------------------------------------------------------------------------------------
 
     -- Insert the background image
-    bkg_image = display.newImageRect("Images/MainMenuNathan@2x.png", display.contentWidth, display.contentHeight)
+    bkg_image = display.newImageRect("Images/Level2ScreenNathan@2x.png", display.contentWidth, display.contentHeight)
     bkg_image.x = display.contentCenterX
     bkg_image.y = display.contentCenterY
     bkg_image.width = display.contentWidth
@@ -54,9 +63,38 @@ function scene:create( event )
         -- Insert background image into the scene group in order to ONLY be associated with this scene
     sceneGroup:insert( bkg_image )    
 
-end --function scene:create( event )
+     --function scene:create( event )
 
------------------------------------------------------------------------------------------
+    ----------------------------------------------------------------------------------
+    --Buttons
+    ------------------------------------------------------------------------------------------
+    -- Creating Back Button
+    backButton = widget.newButton( 
+    {
+        -- Setting Position
+        x = display.contentWidth*1/8,
+        y = display.contentHeight*15/16,
+
+        -- Setting Dimensions
+        -- width = 1000,
+        -- height = 106,
+
+        -- Setting Visual Properties
+        defaultFile = "Images/BackButtonUnpressedYourName@2x.png",
+        overFile = "Images/BackButtonPressedYourName@2x.png",
+
+        width = 100,
+        height = 50,
+
+        -- Setting Functional Properties
+        onRelease = BackTransition
+
+    } )
+
+    -----------------------------------------------------------------------------------------
+    -- Associating Buttons with this scene
+    sceneGroup:insert( backButton )
+ end 
 
 -- The function called when the scene is issued to appear on screen
 function scene:show( event )
